@@ -7,7 +7,7 @@ import {
   TableCell,
 } from "@radix-ui/themes";
 import IssueActions from "./IssueActions";
-import { Skeleton } from "../components";
+import { Skeleton } from "../../components";
 
 const LoadingIssueText = () => {
   const issues = [1, 2, 3, 4, 5];
