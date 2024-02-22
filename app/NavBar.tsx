@@ -1,10 +1,4 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { AiFillBug } from "react-icons/ai";
-import classNames from "classnames";
-import { useSession } from "next-auth/react";
 import {
   Avatar,
   Box,
@@ -13,6 +7,12 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import classNames from "classnames";
+import { Skeleton } from "@/app/components";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AiFillBug } from "react-icons/ai";
 
 const NavBar = () => {
   return (
@@ -61,7 +61,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
 
   if (status === "unauthenticated")
     return (
@@ -79,6 +79,7 @@ const AuthStatus = () => {
             fallback="?"
             size="2"
             radius="full"
+            className="cursor-pointer"
           />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
